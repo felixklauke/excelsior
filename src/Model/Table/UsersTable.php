@@ -1,7 +1,6 @@
 <?php
 namespace App\Model\Table;
 
-use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
@@ -49,34 +48,16 @@ class UsersTable extends Table
         ]);
     }
 
-    /**
-     * Default validation rules.
-     *
-     * @param \Cake\Validation\Validator $validator Validator instance.
-     * @return \Cake\Validation\Validator
-     */
     public function validationDefault(Validator $validator)
     {
-        $validator
-            ->integer('id')
-            ->allowEmpty('id', 'create');
-
-        $validator
-            ->scalar('username')
-            ->requirePresence('username', 'create')
-            ->notEmpty('username');
-
-        $validator
-            ->scalar('password')
-            ->requirePresence('password', 'create')
-            ->notEmpty('password');
-
-        $validator
-            ->email('email')
-            ->requirePresence('email', 'create')
-            ->notEmpty('email');
-
-        return $validator;
+        return $validator
+            ->notEmpty('username', 'A username is required')
+            ->notEmpty('password', 'A password is required')
+            ->notEmpty('role', 'A role is required')
+            ->add('role', 'inList', [
+                'rule' => ['inList', ['admin', 'author']],
+                'message' => 'Please enter a valid role'
+            ]);
     }
 
     /**

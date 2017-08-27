@@ -152,7 +152,11 @@
       <DataType>date|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="37" parent="9" name="PRIMARY">
+    <column id="37" parent="9" name="role">
+      <Position>7</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <key id="38" parent="9" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
