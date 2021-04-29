@@ -1,0 +1,22 @@
+version: 2
+updates:
+- package-ecosystem: composer
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "04:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: psy/psysh
+    versions:
+    - 0.10.6
+    - 0.10.7
+  - dependency-name: cakephp/cakephp
+    versions:
+    - 3.9.6
+    - 3.9.7
+    - 3.9.8
+  - dependency-name: mobiledetect/mobiledetectlib
+    versions:
+    - 2.8.35
+    - 2.8.36
